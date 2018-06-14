@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class="zhuce">
+  <head>
+    <script type="text/javascript" src="/javascripts/jquery-1.11.0.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  <body class="zhuce">
+    <h1 class="tit">欢迎注册<span>(欢迎成为雷丰溪号列车成员！！！)</span></h1>
+    <form action="" class="denglubiao">
+      <input type="text" class="input1" placeholder="请输入用户名">
+      <input type="text" class="input2" placeholder="请输入密码">
+      <input type="button" class="input3" value="注册">
+      <a href="/">已有账号？点我登录</a>
+    </form>
+
+  </body>
+  <script>
+  $(function(){
+    $(".input3").click(function(){
+        $.post("/users/zhuce",
+                {name:$(".input1").val(),pwd:$(".input2").val()},
+                function(data){
+              if (data==1) {
+                alert("已经有此账户，请重新注册");
+              }else{
+                alert("注册成功");
+                location.href="/"
+              }
+            }
+        )
+    })
+  })
+
+
+  </script>
+</html>

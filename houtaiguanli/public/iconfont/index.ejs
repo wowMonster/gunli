@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="/javascripts/jquery-1.11.0.js" charset="utf-8"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  <body>
+    <h1 class="tit">欢迎登录<span>(欢迎登陆雷丰溪号列车:本车终点站是我的月亮你的心)</span></h1>
+    <form action="" class="denglubiao">
+      <input type="text" class="input1" placeholder="请输入用户名">
+      <input type="text" class="input2" placeholder="请输入密码">
+      <input type="button" class="input3" value="登录">
+      <a href="/zhuce">没有账号？点击注册</a>
+    </form>
+      <script>
+            $(".input3").click(function(){
+                $.ajax({
+                    type:"post",
+                    url:"users/index",
+                    data:{name:$(".input1").val(),pwd:$(".input2").val()},
+                    success:function(data){
+                      if (data==1) {
+                        console.log("登录成功");
+                        location.href="/main";
+                      }else{
+                        console.log("登录失败");
+                        location.href="/";
+                      }
+                    }
+                })
+            })
+
+      </script>
+  </body>
+</html>
